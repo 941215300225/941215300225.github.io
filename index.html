@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bexultan Askarbekov — backend developer</title>
+<meta name="description" content="Backend developer: Laravel, PostgreSQL, Vue.js. Corporate systems: treasury, e-commerce, integrations. Almaty, Kazakhstan.">
+<style>
+  @font-face {
+    font-family: "Unbounded"; font-weight: 500; font-display: swap;
+    src: url("assets/fonts/unbounded-cyrillic-500-normal.woff2") format("woff2");
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Unbounded"; font-weight: 500; font-display: swap;
+    src: url("assets/fonts/unbounded-latin-500-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+  @font-face {
+    font-family: "Unbounded"; font-weight: 600; font-display: swap;
+    src: url("assets/fonts/unbounded-cyrillic-600-normal.woff2") format("woff2");
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Unbounded"; font-weight: 600; font-display: swap;
+    src: url("assets/fonts/unbounded-latin-600-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 400; font-display: swap;
+    src: url("assets/fonts/golos-text-cyrillic-400-normal.woff2") format("woff2");
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 400; font-display: swap;
+    src: url("assets/fonts/golos-text-latin-400-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 500; font-display: swap;
+    src: url("assets/fonts/golos-text-cyrillic-500-normal.woff2") format("woff2");
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 500; font-display: swap;
+    src: url("assets/fonts/golos-text-latin-500-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 600; font-display: swap;
+    src: url("assets/fonts/golos-text-cyrillic-600-normal.woff2") format("woff2");
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Golos Text"; font-weight: 600; font-display: swap;
+    src: url("assets/fonts/golos-text-latin-600-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+
+  :root {
+    --deep: #0f2a4d;
+    --deep-2: #0b2140;
+    --paper: #f3f5f8;
+    --ink: #17233a;
+    --ink-soft: #4d5c72;
+    --ink-faint: #8792a4;
+    --line: #d9dfe8;
+    --gold: #e8a63d;
+    --gold-deep: #b57d1f;
+    --sky: #9fc0e8;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Golos Text", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== Hero ===== */
+  .hero {
+    background:
+      radial-gradient(circle at 82% 8%, rgba(232, 166, 61, 0.14), transparent 42%),
+      radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.4px) 0 0 / 26px 26px,
+      linear-gradient(168deg, var(--deep) 12%, var(--deep-2) 88%);
+    color: var(--white);
+    padding: 88px 0 0;
+  }
+  .hero h1 {
+    font-family: "Unbounded", "Golos Text", sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 7.2vw, 64px);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    max-width: 13ch;
+  }
+  .hero h1 .last { color: var(--sky); }
+  .hero .lead {
+    margin-top: 26px;
+    font-size: 18.5px;
+    line-height: 1.6;
+    max-width: 33.5em;
+    color: #ccdbee;
+  }
+  .hero .lead b { color: var(--white); font-weight: 500; }
+  .hero .contacts {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero .contacts a {
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 15px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .hero .contacts a:hover { border-color: var(--gold); background: rgba(232, 166, 61, 0.12); }
+  .hero .contacts a.primary { background: var(--gold); border-color: var(--gold); color: #241a05; font-weight: 500; }
+  .hero .contacts a.primary:hover { background: #f0b352; }
+  .hero .contacts .place { color: #8aa3c4; font-size: 15px; margin-left: 4px; }
+
+  /* screenshot breaking out of the hero */
+  .hero .shot {
+    display: block;
+    margin: 56px 0 -170px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 32px 70px -24px rgba(6, 16, 34, 0.55);
+    background: var(--white);
+  }
+  .hero .shot img { display: block; width: 100%; height: auto; }
+  .after-hero { padding-top: 212px; }
+  @media (max-width: 640px) {
+    .hero { padding-top: 64px; }
+    .hero .shot { margin-bottom: -96px; }
+    .after-hero { padding-top: 132px; }
+  }
+
+  a { color: var(--gold-deep); text-decoration: none; }
+  main a { border-bottom: 1px solid #ecd2a0; }
+  main a:hover { border-bottom-color: var(--gold-deep); }
+  a:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+
+  /* ===== Sections ===== */
+  section { margin-top: 84px; }
+  h2 {
+    font-family: "Unbounded", "Golos Text", sans-serif;
+    font-weight: 500;
+    font-size: clamp(21px, 3vw, 26px);
+    letter-spacing: -0.01em;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 14px 0 30px;
+  }
+
+  .project h3 { font-size: 20px; font-weight: 600; }
+  .project p { margin-top: 10px; color: var(--ink-soft); max-width: 40em; }
+  .project .links { margin-top: 14px; }
+
+  /* ===== Experience ===== */
+  .job {
+    display: grid;
+    grid-template-columns: 118px 1fr;
+    gap: 22px;
+    padding: 26px 0;
+  }
+  .job + .job { border-top: 1px solid var(--line); }
+  .job .when {
+    color: var(--ink-faint);
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+  .job:first-of-type .when { color: var(--gold-deep); font-weight: 500; }
+  .job h3 { font-size: 18px; font-weight: 600; }
+  .job .role { color: var(--ink-soft); margin-top: 2px; }
+  .job ul { margin: 13px 0 0; padding-left: 18px; color: var(--ink-soft); }
+  .job li { margin-top: 7px; }
+  .job li::marker { color: var(--gold); }
+  .job .stack { margin-top: 13px; font-size: 14.5px; color: var(--ink-faint); }
+  @media (max-width: 600px) {
+    .job { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ===== Stack ===== */
+  .stack-rows { display: grid; gap: 0; }
+  .stack-rows .row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 18px;
+    padding: 13px 0;
+  }
+  .stack-rows .row + .row { border-top: 1px solid var(--line); }
+  .stack-rows dt { color: var(--ink-faint); }
+  .stack-rows dd { margin: 0; }
+  @media (max-width: 600px) {
+    .stack-rows .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  /* ===== Footer ===== */
+  .foot {
+    margin-top: 96px;
+    background: var(--deep);
+    color: #b9cbe2;
+  }
+  .foot .wrap {
+    padding: 44px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .foot .cta {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--white);
+  }
+  .foot a {
+    color: var(--gold);
+    border-bottom: 1px solid rgba(232, 166, 61, 0.45);
+  }
+  .foot a:hover { border-bottom-color: var(--gold); }
+
+  ::selection { background: rgba(232, 166, 61, 0.35); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1, .hero .lead, .hero .contacts, .hero .shot {
+      animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    }
+    .hero .lead { animation-delay: 0.08s; }
+    .hero .contacts { animation-delay: 0.16s; }
+    .hero .shot { animation-delay: 0.26s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Bexultan <span class="last">Askarbekov</span></h1>
+    <p class="lead">Backend developer: <b>Laravel, PostgreSQL, Vue.js</b>.
+    Nine years of building corporate systems that move real money and reconcile
+    to the last cent: treasury for a 30+ company holding, <span style="white-space: nowrap">e-commerce</span>,
+    1C and Bitrix24 integrations. Based in Almaty, Kazakhstan, working on-site and remotely.</p>
+    <nav class="contacts">
+      <a class="primary" href="mailto:b.askarbekov@gmail.com">Get in touch</a>
+      <a href="https://github.com/941215300225">GitHub</a>
+      <span class="place">Almaty, Kazakhstan</span>
+    </nav>
+    <a class="shot" href="https://github.com/941215300225/portfolio-risk-dashboard"
+       aria-label="Credit portfolio risk dashboard on GitHub">
+      <img src="assets/risk-dashboard.png" width="2400" height="1420"
+           alt="Risk dashboard: portfolio of 484.7 billion tenge, PAR30, PAR90, NPL, provisions and month-over-month dynamics">
+    </a>
+  </div>
+</header>
+
+<main class="wrap after-hero">
+
+  <section class="project" style="margin-top: 0">
+    <h2>Featured project</h2>
+    <h3>Credit portfolio risk dashboard</h3>
+    <p>A full pipeline on PostgreSQL: idempotent load into a raw schema,
+    reporting views, a semantic YAML model and a Vega-Lite dashboard.
+    Every metric is backed by an independent reconciliation: control sums
+    that match to the cent, provisions recomputed from atomic rows, and
+    a second calculation of all figures in pandas sharing no code with the SQL.</p>
+    <p class="links"><a href="https://github.com/941215300225/portfolio-risk-dashboard">Code and README on GitHub</a></p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="when">2026 — present</div>
+      <div>
+        <h3>Alageum Group</h3>
+        <div class="role">Corporate systems developer</div>
+        <ul>
+          <li>Everest treasury system (Laravel + PostgreSQL + Vue.js): payment
+          approval routes for 30+ holding companies, Excel reporting,
+          a payment calendar module</li>
+          <li>Alageum Trade online store (Laravel 12 + Filament): a 1,500-item
+          catalog with supplier imports and a PDF quote generator</li>
+          <li>HR and procurement automation in Bitrix24 through Laravel
+          microservices, document generation</li>
+          <li>1C integration for a real estate management system; support of
+          an on-premise Bitrix24 portal with ~900 users, migration to PHP 8.3</li>
+          <li>GitLab CI/CD, server deployment and configuration, a security
+          audit of the holding's public web infrastructure (24 sites on 5 servers)</li>
+        </ul>
+        <div class="stack">PHP 8 / Laravel · PostgreSQL · Vue.js · TypeScript · Bitrix24 REST · Docker · nginx</div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2021 — present</div>
+      <div>
+        <h3>Freelance</h3>
+        <div class="role">Fullstack developer</div>
+        <ul>
+          <li>15+ commercial projects delivered: online stores, CRM systems,
+          internal portals</li>
+          <li>Backends in PHP (Laravel, Yii2), Python (Django, FastAPI) and
+          Node.js; frontends in Vue.js + TypeScript</li>
+          <li>Database design, SQL optimization, Redis, deployment and security</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2023 — 2025</div>
+      <div>
+        <h3>Almaty Management University</h3>
+        <div class="role">Web developer</div>
+        <ul>
+          <li>Integrated the Moodle LMS with the university's internal systems,
+          synchronizing data for 5,000+ students and faculty</li>
+          <li>Automated reports and data exports with Python</li>
+        </ul>
+        <div class="stack">PHP · MySQL · Moodle API · Python · Docker</div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2019 — 2021</div>
+      <div>
+        <h3>Kommesk-Omir Insurance</h3>
+        <div class="role">Backend developer</div>
+        <ul>
+          <li>Built the backend for a mobile app and integrated it with the
+          corporate website, exchanging data in real time</li>
+          <li>Refactored 20,000+ lines of code, cutting server load by a quarter</li>
+          <li>Data protection: JWT, access control, hashing</li>
+        </ul>
+        <div class="stack">PHP · 1C-Bitrix · PostgreSQL · Elasticsearch · Docker</div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2017 — 2019</div>
+      <div>
+        <h3>Web studios, Almaty</h3>
+        <div class="role">Web developer</div>
+        <ul>
+          <li>Corporate and promo websites: from responsive layouts to custom
+          plugins, error monitoring, code review and git-flow in the team</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <dl class="stack-rows">
+      <div class="row"><dt>Backend</dt><dd>PHP 8 (Laravel, Yii2), Python (FastAPI, Django), Node.js, Java (Spring), C++</dd></div>
+      <div class="row"><dt>Data</dt><dd>PostgreSQL, MySQL, Redis, Elasticsearch, SQL optimization</dd></div>
+      <div class="row"><dt>Frontend</dt><dd>Vue.js, TypeScript, responsive layouts</dd></div>
+      <div class="row"><dt>Platforms</dt><dd>Bitrix24 (cloud and on-premise), 1C integrations, Moodle API</dd></div>
+      <div class="row"><dt>Infrastructure</dt><dd>Docker, nginx, GitLab CI/CD, server configuration and security</dd></div>
+      <div class="row"><dt>Tools</dt><dd>Claude Code in daily work: AI drafts the code, I own the numbers</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <p>International Information Technology University (IITU), Almaty.<br>
+    Master's in Information Systems, 2019. Bachelor's, 2017.</p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cta">Have a backend problem to solve?</div>
+    <div><a href="mailto:b.askarbekov@gmail.com">b.askarbekov@gmail.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
