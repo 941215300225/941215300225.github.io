@@ -170,9 +170,61 @@
     margin: 14px 0 30px;
   }
 
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 44px;
+    align-items: start;
+  }
   .project h3 { font-size: 20px; font-weight: 600; }
   .project p { margin-top: 10px; color: var(--ink-soft); max-width: 40em; }
   .project .links { margin-top: 14px; }
+  @media (max-width: 720px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .receipt { justify-self: center; }
+  }
+
+  /* ===== Чек с итогами задания ===== */
+  .receipt {
+    background: #fdf8e7;
+    color: #2b2b23;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 22px 20px 26px;
+    width: 300px;
+    transform: rotate(1.2deg);
+    box-shadow: 0 14px 34px -14px rgba(23, 35, 58, 0.35);
+    --zz: 9px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--zz)),
+      96.7% 100%, 93.3% calc(100% - var(--zz)), 90% 100%, 86.7% calc(100% - var(--zz)),
+      83.3% 100%, 80% calc(100% - var(--zz)), 76.7% 100%, 73.3% calc(100% - var(--zz)),
+      70% 100%, 66.7% calc(100% - var(--zz)), 63.3% 100%, 60% calc(100% - var(--zz)),
+      56.7% 100%, 53.3% calc(100% - var(--zz)), 50% 100%, 46.7% calc(100% - var(--zz)),
+      43.3% 100%, 40% calc(100% - var(--zz)), 36.7% 100%, 33.3% calc(100% - var(--zz)),
+      30% 100%, 26.7% calc(100% - var(--zz)), 23.3% 100%, 20% calc(100% - var(--zz)),
+      16.7% 100%, 13.3% calc(100% - var(--zz)), 10% 100%, 6.7% calc(100% - var(--zz)),
+      3.3% 100%, 0 calc(100% - var(--zz)));
+  }
+  .receipt .r-title { text-align: center; font-weight: 700; }
+  .receipt .r-date { text-align: center; color: #7a7764; margin-top: 2px; }
+  .receipt .r-sep { border: none; border-top: 1px dashed #c9c3a6; margin: 12px 0; }
+  .receipt .r-line { display: flex; justify-content: space-between; gap: 12px; margin-top: 3px; }
+  .receipt .r-line .good { color: #2e7d4f; }
+  .receipt .r-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 2px; }
+  .receipt .r-total .sum {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+  .receipt-caption {
+    margin-top: 16px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 14px;
+    max-width: 300px;
+  }
 
   /* ===== Experience ===== */
   .job {
@@ -283,13 +335,34 @@
 
   <section class="project" style="margin-top: 0">
     <h2>Featured project</h2>
-    <h3>Credit portfolio risk dashboard</h3>
-    <p>A full pipeline on PostgreSQL: idempotent load into a raw schema,
-    reporting views, a semantic YAML model and a Vega-Lite dashboard.
-    Every metric is backed by an independent reconciliation: control sums
-    that match to the cent, provisions recomputed from atomic rows, and
-    a second calculation of all figures in pandas sharing no code with the SQL.</p>
-    <p class="links"><a href="https://github.com/941215300225/portfolio-risk-dashboard">Code and README on GitHub</a></p>
+    <div class="project-grid">
+      <div>
+        <h3>Credit portfolio risk dashboard</h3>
+        <p>A full pipeline on PostgreSQL: idempotent load into a raw schema,
+        reporting views, a semantic YAML model and a Vega-Lite dashboard.
+        Every metric is backed by an independent reconciliation: control sums
+        that match to the cent, provisions recomputed from atomic rows, and
+        a second calculation of all figures in pandas sharing no code with the SQL.</p>
+        <p class="links"><a href="https://github.com/941215300225/portfolio-risk-dashboard">Code and README on GitHub</a></p>
+      </div>
+      <div>
+        <div class="receipt" role="img" aria-label="Portfolio risk summary as of 01.10.2026: portfolio 484.7 billion tenge, PAR30 10.3%, PAR90 4.5%, NPL 10.0% down 1.84 points month over month, top-10 groups 17.0%, provisions 31.2 billion tenge">
+          <div class="r-title">Portfolio risk summary</div>
+          <div class="r-date">as of 01.10.2026</div>
+          <hr class="r-sep">
+          <div class="r-line"><span>Portfolio</span><span>484.7 bn ₸</span></div>
+          <div class="r-line"><span>PAR30</span><span>10.3%</span></div>
+          <div class="r-line"><span>PAR90</span><span>4.5%</span></div>
+          <hr class="r-sep">
+          <div class="r-line"><span>NPL</span><span>10.0%</span></div>
+          <div class="r-line"><span>Top-10 groups</span><span>17.0%</span></div>
+          <div class="r-line"><span>vs 01.09</span><span class="good">NPL &minus;1.84 pp</span></div>
+          <hr class="r-sep">
+          <div class="r-total"><span>Provisions</span><span class="sum">31.2 bn ₸</span></div>
+        </div>
+        <p class="receipt-caption">Final figures of the pipeline, reconciled to the cent</p>
+      </div>
+    </div>
   </section>
 
   <section>
